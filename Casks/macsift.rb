@@ -1,6 +1,6 @@
 cask "macsift" do
-  version "0.2.11"
-  sha256 "0d2b7a4c6b7ed5943db12be0ffdcd9448ece5d4c7c1fd637ef8a80be98b9e636"
+  version "0.3.0"
+  sha256 "5b718990d1266327f9444ad57cba9725c2dc021f8d63cf9048df79d673935874"
 
   url "https://github.com/Lcharvol/MacSift/releases/download/v#{version}/MacSift-#{version}.zip",
       verified: "github.com/Lcharvol/MacSift/"
