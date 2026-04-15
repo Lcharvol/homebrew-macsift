@@ -1,11 +1,11 @@
 cask "macsift" do
-  version "0.2.10"
-  sha256 "212159e7d91318e1cb407671971c0de103ddd9f43fcda8fa7a9287d1705da394"
+  version "0.2.11"
+  sha256 "0d2b7a4c6b7ed5943db12be0ffdcd9448ece5d4c7c1fd637ef8a80be98b9e636"
 
   url "https://github.com/Lcharvol/MacSift/releases/download/v#{version}/MacSift-#{version}.zip",
       verified: "github.com/Lcharvol/MacSift/"
   name "MacSift"
-  desc "Transparent disk cleaner for macOS Tahoe"
+  desc "Transparent disk cleaner that groups files by owning app"
   homepage "https://github.com/Lcharvol/MacSift"
 
   # The release flow publishes a versioned zip (MacSift-X.Y.Z.zip) alongside
@@ -17,7 +17,6 @@ cask "macsift" do
   end
 
   auto_updates true
-
   # MacSift is native SwiftUI using macOS 26 Tahoe's Liquid Glass APIs.
   # It literally will not launch on anything older — LSMinimumSystemVersion
   # is 26.0 in the shipped Info.plist.
@@ -39,11 +38,11 @@ cask "macsift" do
   # .app bundle. Mirrors what the in-app "Uninstall MacSift…" button does
   # (minus the .app itself, which Homebrew handles).
   zap trash: [
+    "~/Library/HTTPStorages/com.macsift.app",
+    "~/Library/HTTPStorages/com.macsift.app.binarycookies",
     "~/Library/Logs/MacSift",
     "~/Library/Preferences/com.macsift.app.plist",
     "~/Library/Saved Application State/com.macsift.app.savedState",
-    "~/Library/HTTPStorages/com.macsift.app",
-    "~/Library/HTTPStorages/com.macsift.app.binarycookies",
   ]
 
   caveats <<~EOS
@@ -58,6 +57,9 @@ cask "macsift" do
     MacSift requires Full Disk Access to scan system caches and logs. On
     first launch, grant it in System Settings → Privacy & Security →
     Full Disk Access.
+
+    The UI is localized in English and French — it follows your macOS
+    system locale automatically.
 
     Source: https://github.com/Lcharvol/MacSift
   EOS
