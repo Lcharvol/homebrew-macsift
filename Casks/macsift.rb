@@ -1,6 +1,6 @@
 cask "macsift" do
-  version "0.3.0"
-  sha256 "5b718990d1266327f9444ad57cba9725c2dc021f8d63cf9048df79d673935874"
+  version "0.3.1"
+  sha256 "1bd0eef0b0c87e7effdd8881b8c85b3bc6aab0f86c828ae6ca70bafe63046787"
 
   url "https://github.com/Lcharvol/MacSift/releases/download/v#{version}/MacSift-#{version}.zip",
       verified: "github.com/Lcharvol/MacSift/"
@@ -17,9 +17,10 @@ cask "macsift" do
   end
 
   auto_updates true
-  # MacSift is native SwiftUI using macOS 26 Tahoe's Liquid Glass APIs.
-  # It literally will not launch on anything older — LSMinimumSystemVersion
-  # is 26.0 in the shipped Info.plist.
+  # MacSift is native SwiftUI. Liquid Glass APIs from macOS 26 (Tahoe) are
+  # gated behind runtime availability checks, so the app launches on macOS
+  # 15 (Sequoia) and falls back to .regularMaterial / .bordered button
+  # styles there. LSMinimumSystemVersion is 15.0 in the shipped Info.plist.
   depends_on macos: ">= :sequoia"
 
   app "MacSift.app"
