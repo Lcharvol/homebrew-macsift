@@ -1,6 +1,6 @@
 cask "macsift" do
-  version "0.3.1"
-  sha256 "1bd0eef0b0c87e7effdd8881b8c85b3bc6aab0f86c828ae6ca70bafe63046787"
+  version "0.5.0"
+  sha256 "d381b44bb3fa425007bc54f55e9375121d2079c93e6fa42759fa842c1aacdac2"
 
   url "https://github.com/Lcharvol/MacSift/releases/download/v#{version}/MacSift-#{version}.zip",
       verified: "github.com/Lcharvol/MacSift/"
@@ -21,7 +21,7 @@ cask "macsift" do
   # gated behind runtime availability checks, so the app launches on macOS
   # 15 (Sequoia) and falls back to .regularMaterial / .bordered button
   # styles there. LSMinimumSystemVersion is 15.0 in the shipped Info.plist.
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "MacSift.app"
 
@@ -59,8 +59,8 @@ cask "macsift" do
     first launch, grant it in System Settings → Privacy & Security →
     Full Disk Access.
 
-    The UI is localized in English and French — it follows your macOS
-    system locale automatically.
+    The UI is localized in English, French and Simplified Chinese — it
+    follows your macOS system locale, and Settings has a language picker.
 
     Source: https://github.com/Lcharvol/MacSift
   EOS
